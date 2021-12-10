@@ -51,7 +51,6 @@ class _HomepageState extends State<Homepage> {
   @override
   void initState() {
     fetchdata();
-    // TODO: implement initState
     super.initState();
   }
 
@@ -67,17 +66,113 @@ class _HomepageState extends State<Homepage> {
         child: Column(
           children: [
             mapresponse == null
-                ? Container(
-                    child: const Text("NULL"),
+                ? const Center(
+                    child: CircularProgressIndicator(
+                      color: Colors.deepPurpleAccent,
+                    ),
                   )
                 : ListView.builder(
                     shrinkWrap: true,
                     itemCount: listresponse == null ? 0 : listresponse?.length,
                     itemBuilder: (BuildContext context, int index) {
                       return Card(
+                        color: Colors.deepOrangeAccent,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30)),
                         child: Column(
                           children: [
-                            Text(listresponse![index]['home_team']),
+                            Text(
+                              "Home_team : ${listresponse![index]['home_team']}",
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15),
+                            ),
+                            Text(
+                              "Away_team : ${listresponse![index]['away_team']}",
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15),
+                            ),
+                            Text(
+                              "Id : ${listresponse![index]['id'].toString()}",
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15),
+                            ),
+                            Text(
+                              "Market : ${listresponse![index]['market']}",
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15),
+                            ),
+                            //Text(listresponse![index]['Competition_name']),
+                            Text(
+                              "Prediction : ${listresponse![index]['prediction']}",
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15),
+                            ),
+                            Text(
+                              "Competition_cluster : ${listresponse![index]['competition_cluster']}",
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15),
+                            ),
+                            Text(
+                              "Status : ${listresponse![index]['status']}",
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15),
+                            ),
+                            Text(
+                              "Federation : ${listresponse![index]['federation']}",
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15),
+                            ),
+                            Text(
+                              "Is expired : ${listresponse![index]['is_expired'].toString()}",
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15),
+                            ),
+                            Text(
+                              "Season : ${listresponse![index]['season']}",
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15),
+                            ),
+                            Text(
+                              "Result : ${listresponse![index]['result']}",
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15),
+                            ),
+                            Text(
+                              "Start_date : ${listresponse![index]['start_date']}",
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15),
+                            ),
+                            Text(
+                              "Last_update_at : ${listresponse![index]['last_update_at']}",
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15),
+                            ),
                           ],
                         ),
                       );
