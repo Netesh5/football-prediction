@@ -27,7 +27,7 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  List? mapresponse;
+  Map? mapresponse;
   List? listresponse;
   String? stringresponse;
 
@@ -43,6 +43,7 @@ class _HomepageState extends State<Homepage> {
     if (response.statusCode == 200) {
       setState(() {
         mapresponse = json.decode(response.body);
+        listresponse = mapresponse!['data'];
       });
     }
   }
@@ -59,27 +60,31 @@ class _HomepageState extends State<Homepage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Football Prediction"),
+        centerTitle: true,
         backgroundColor: Colors.deepPurpleAccent,
       ),
-      body: Column(
-        children: [
-          mapresponse == null
-              ? Container(
-                  child: const Text("NULL"),
-                )
-              : ListView.builder(
-                  itemCount: mapresponse == null ? 0 : mapresponse?.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Card(
-                      child: Column(
-                        children: [
-                          Text(mapresponse![1][index]),
-                        ],
-                      ),
-                    );
-                  },
-                ),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            mapresponse == null
+                ? Container(
+                    child: const Text("NULL"),
+                  )
+                : ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: listresponse == null ? 0 : listresponse?.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Card(
+                        child: Column(
+                          children: [
+                            Text(listresponse![index]["home_team"]),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+          ],
+        ),
       ),
     );
   }
