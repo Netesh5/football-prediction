@@ -77,7 +77,7 @@ class _HomepageState extends State<Homepage> {
                       return Card(
                         child: Column(
                           children: [
-                            Text(listresponse![index]["home_team"]),
+                            Text(listresponse![index]['home_team']),
                           ],
                         ),
                       );
