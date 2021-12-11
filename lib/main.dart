@@ -31,22 +31,24 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
   Map? mapresponse;
+  Map? mapresponse2;
+  Map? mapresponse3;
   List? listresponse;
   String? stringresponse;
 
   Future fetchdata() async {
     http.Response response;
     response = await http.get(
-        Uri.parse(
-            "https://football-prediction-api.p.rapidapi.com/api/v2/predictions"),
+        Uri.parse("https://football-prediction1.p.rapidapi.com/best-bets"),
         headers: {
-          'x-rapidapi-host': 'football-prediction-api.p.rapidapi.com',
+          'x-rapidapi-host': 'football-prediction1.p.rapidapi.com',
           'x-rapidapi-key': 'd83ac41cb1msh02d38254c7d5f4cp18e066jsne1c62a888b55'
         });
     if (response.statusCode == 200) {
       setState(() {
         mapresponse = json.decode(response.body);
-        listresponse = mapresponse!['data'];
+
+        listresponse = mapresponse!["matches"]["today"];
       });
     }
   }
