@@ -6,42 +6,55 @@ Widget team_detail(List listresponse, Color cardcolor) {
     shrinkWrap: true,
     itemCount: listresponse.length,
     itemBuilder: (BuildContext context, int index) {
+      String decide = listresponse[index]['predictions']['result'];
       return Padding(
         padding: const EdgeInsets.all(10.0),
         child: Card(
             color: cardcolor,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-            child: team(listresponse, index)),
+            child: team(listresponse, index, decide)),
       );
     },
   );
 }
 
-Widget team(List listresponse, int index) {
+Widget team(List listresponse, int index, String decide) {
   return Column(
     children: [
-      Text(
-        "Home_team : ${listresponse[index]['homeTeam']}",
-        style: const TextStyle(color: Colors.white, fontSize: 15),
+      const SizedBox(
+        height: 20,
       ),
-      Text(
-        "Away_team : ${listresponse[index]['awayTeam']}",
-        style: const TextStyle(color: Colors.white, fontSize: 15),
-      ),
-      Text(
-        "Result : ${listresponse[index]['predictions']['result']}",
-        style: const TextStyle(color: Colors.white, fontSize: 15),
+      Row(
+        children: [
+          Text(" ${listresponse[index]['homeTeam']}",
+              style: const TextStyle(
+                  color: decide == "home" ? Colors.green : Colors.red,
+                  fontSize: 15)),
+          const Text(" Vs ",
+              style: TextStyle(color: Colors.white, fontSize: 15)),
+          Text(
+            " ${listresponse[index]['awayTeam']}",
+            style: const TextStyle(color: Colors.white, fontSize: 15),
+          ),
+        ],
       ),
       // Text(
-      //   "Market : ${listresponse[index]['market']}",
+      //   "Result : ${listresponse[index]['predictions']['result']}",
       //   style: const TextStyle(color: Colors.white, fontSize: 15),
       // ),
+      Text(
+        "Result: ${listresponse[index]['predictions']['result']}",
+        style: const TextStyle(color: Colors.white, fontSize: 15),
+      ),
       //Text(listresponse![index]['Competition_name']),
-      // Text(
-      //   "Prediction : ${listresponse[index]['prediction']}",
-      //   style: const TextStyle(color: Colors.white, fontSize: 15),
-      // ),
+      Text(
+        "Score : ${listresponse[index]['predictions']['score'].toString()}",
+        style: const TextStyle(color: Colors.white, fontSize: 15),
+      ),
+      const SizedBox(
+        height: 20,
+      ),
       // Text(
       //   "Competition_cluster : ${listresponse[index]['competition_cluster']}",
       //   style: const TextStyle(color: Colors.white, fontSize: 15),

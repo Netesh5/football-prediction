@@ -39,7 +39,7 @@ class _HomepageState extends State<Homepage> {
   Future fetchdata() async {
     http.Response response;
     response = await http.get(
-        Uri.parse("https://football-prediction1.p.rapidapi.com/best-bets"),
+        Uri.parse("https://football-prediction1.p.rapidapi.com/today"),
         headers: {
           'x-rapidapi-host': 'football-prediction1.p.rapidapi.com',
           'x-rapidapi-key': 'd83ac41cb1msh02d38254c7d5f4cp18e066jsne1c62a888b55'
@@ -47,8 +47,7 @@ class _HomepageState extends State<Homepage> {
     if (response.statusCode == 200) {
       setState(() {
         mapresponse = json.decode(response.body);
-
-        listresponse = mapresponse!["matches"]["today"];
+        listresponse = mapresponse!["matches"];
       });
     }
   }
