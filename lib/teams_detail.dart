@@ -17,9 +17,16 @@ Widget team_detail(List listresponse, Color cardcolor) {
         child: Card(
           color: cardcolor,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-          child: Center(
-            child: team(listresponse, index, team1score, team2score),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              team(listresponse, index, team1score, team2score),
+              Text(
+                " ${listresponse[index]['predictions']['result']}",
+                style: const TextStyle(color: Colors.white, fontSize: 15),
+              ),
+            ],
           ),
         ),
       );
@@ -29,6 +36,7 @@ Widget team_detail(List listresponse, Color cardcolor) {
 
 Widget team(List listresponse, int index, int team1score, int team2score) {
   return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
     children: [
       Column(
         children: [
@@ -42,7 +50,31 @@ Widget team(List listresponse, int index, int team1score, int team2score) {
             style: const TextStyle(color: Colors.white, fontSize: 17),
           ),
         ],
-      )
+      ),
+      Text(
+          " ${listresponse[index]['predictions']['score'].toString().split("-")[0]}",
+          style: team1score > team2score
+              ? const TextStyle(color: Colors.green, fontSize: 20)
+              : const TextStyle(color: Colors.red, fontSize: 20)),
+      const Text(" VS ", style: TextStyle(color: Colors.white, fontSize: 12)),
+      Text(
+          " ${listresponse[index]['predictions']['score'].toString().split("-")[1]}",
+          style: team1score < team2score
+              ? const TextStyle(color: Colors.green, fontSize: 20)
+              : const TextStyle(color: Colors.red, fontSize: 20)),
+      Column(
+        children: [
+          const Icon(
+            Icons.sports_football,
+            color: Colors.white,
+            size: 50,
+          ),
+          Text(
+            " ${listresponse[index]['awayTeam']}",
+            style: const TextStyle(color: Colors.white, fontSize: 17),
+          ),
+        ],
+      ),
     ],
   );
 }
