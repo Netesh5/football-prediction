@@ -6,33 +6,52 @@ Widget team_detail(List listresponse, Color cardcolor) {
     shrinkWrap: true,
     itemCount: listresponse.length,
     itemBuilder: (BuildContext context, int index) {
-      String decide = listresponse[index]['predictions']['result'];
+      String team1 =
+          listresponse[index]['predictions']['score'].toString().split("-")[0];
+      String team2 =
+          listresponse[index]['predictions']['score'].toString().split("-")[1];
+      int team1score = int.parse(team1);
+      int team2score = int.parse(team2);
       return Padding(
         padding: const EdgeInsets.all(10.0),
         child: Card(
-            color: cardcolor,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-            child: team(listresponse, index, decide)),
+          color: cardcolor,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+          child: Center(
+            child: team(listresponse, index, team1score, team2score),
+          ),
+        ),
       );
     },
   );
 }
 
-Widget team(List listresponse, int index, String decide) {
+Widget team(List listresponse, int index, int team1score, int team2score) {
   return Column(
     children: [
       const SizedBox(
         height: 20,
       ),
       Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(" ${listresponse[index]['homeTeam']}",
-              style: const TextStyle(
-                  color: decide == "home" ? Colors.green : Colors.red,
-                  fontSize: 15)),
-          const Text(" Vs ",
-              style: TextStyle(color: Colors.white, fontSize: 15)),
+          Text(
+            " ${listresponse[index]['homeTeam']}",
+            style: const TextStyle(color: Colors.white, fontSize: 15),
+          ),
+          Text(
+              " ${listresponse[index]['predictions']['score'].toString().split("-")[0]}",
+              style: team1score > team2score
+                  ? const TextStyle(color: Colors.green, fontSize: 20)
+                  : const TextStyle(color: Colors.red, fontSize: 20)),
+          const Text(" VS ",
+              style: TextStyle(color: Colors.white, fontSize: 12)),
+          Text(
+              " ${listresponse[index]['predictions']['score'].toString().split("-")[1]}",
+              style: team1score < team2score
+                  ? const TextStyle(color: Colors.green, fontSize: 20)
+                  : const TextStyle(color: Colors.red, fontSize: 20)),
           Text(
             " ${listresponse[index]['awayTeam']}",
             style: const TextStyle(color: Colors.white, fontSize: 15),
@@ -48,10 +67,7 @@ Widget team(List listresponse, int index, String decide) {
         style: const TextStyle(color: Colors.white, fontSize: 15),
       ),
       //Text(listresponse![index]['Competition_name']),
-      Text(
-        "Score : ${listresponse[index]['predictions']['score'].toString()}",
-        style: const TextStyle(color: Colors.white, fontSize: 15),
-      ),
+
       const SizedBox(
         height: 20,
       ),
