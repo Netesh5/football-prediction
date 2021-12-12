@@ -28,85 +28,105 @@ Widget team_detail(List listresponse, Color cardcolor) {
 }
 
 Widget team(List listresponse, int index, int team1score, int team2score) {
-  return Column(
+  return Row(
     children: [
-      const SizedBox(
-        height: 20,
-      ),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+      Column(
         children: [
+          const Icon(
+            Icons.sports_football,
+            color: Colors.white,
+            size: 50,
+          ),
           Text(
             " ${listresponse[index]['homeTeam']}",
-            style: const TextStyle(color: Colors.white, fontSize: 15),
-          ),
-          Text(
-              " ${listresponse[index]['predictions']['score'].toString().split("-")[0]}",
-              style: team1score > team2score
-                  ? const TextStyle(color: Colors.green, fontSize: 20)
-                  : const TextStyle(color: Colors.red, fontSize: 20)),
-          const Text(" VS ",
-              style: TextStyle(color: Colors.white, fontSize: 12)),
-          Text(
-              " ${listresponse[index]['predictions']['score'].toString().split("-")[1]}",
-              style: team1score < team2score
-                  ? const TextStyle(color: Colors.green, fontSize: 20)
-                  : const TextStyle(color: Colors.red, fontSize: 20)),
-          Text(
-            " ${listresponse[index]['awayTeam']}",
-            style: const TextStyle(color: Colors.white, fontSize: 15),
+            style: const TextStyle(color: Colors.white, fontSize: 17),
           ),
         ],
-      ),
-      // Text(
-      //   "Result : ${listresponse[index]['predictions']['result']}",
-      //   style: const TextStyle(color: Colors.white, fontSize: 15),
-      // ),
-      Text(
-        "Result: ${listresponse[index]['predictions']['result']}",
-        style: const TextStyle(color: Colors.white, fontSize: 15),
-      ),
-      //Text(listresponse![index]['Competition_name']),
-
-      const SizedBox(
-        height: 20,
-      ),
-      // Text(
-      //   "Competition_cluster : ${listresponse[index]['competition_cluster']}",
-      //   style: const TextStyle(color: Colors.white, fontSize: 15),
-      // ),
-      // Text(
-      //   "Status : ${listresponse[index]['status']}",
-      //   style: const TextStyle(color: Colors.white, fontSize: 15),
-      // ),
-      // Text(
-      //   "Federation : ${listresponse[index]['federation']}",
-      //   style: const TextStyle(color: Colors.white, fontSize: 15),
-      // ),
-      // Text(
-      //   "Is expired : ${listresponse[index]['is_expired'].toString()}",
-      //   style: const TextStyle(color: Colors.white, fontSize: 15),
-      // ),
-      // Text(
-      //   "Season : ${listresponse[index]['season']}",
-      //   style: const TextStyle(color: Colors.white, fontSize: 15),
-      // ),
-      // Text(
-      //   "Result : ${listresponse[index]['result']}",
-      //   style: const TextStyle(color: Colors.white, fontSize: 15),
-      // ),
-      // Text(
-      //   "Start_date : ${listresponse[index]['start_date']}",
-      //   style: const TextStyle(color: Colors.white, fontSize: 15),
-      // ),
-      // Text(
-      //   "Last_update_at : ${listresponse[index]['last_update_at']}",
-      //   style: const TextStyle(color: Colors.white, fontSize: 15),
-      // ),
-      // Text(
-      //   "Odds : ${listresponse[index]['odds']}",
-      //   style: const TextStyle(color: Colors.white, fontSize: 15),
-      // ),
+      )
     ],
   );
 }
+// Widget team(List listresponse, int index, int team1score, int team2score) {
+//   return Column(
+//     children: [
+//       const SizedBox(
+//         height: 20,
+//       ),
+//       const Icon(Icons.sports_football),
+//       Row(
+//         mainAxisAlignment: MainAxisAlignment.center,
+//         children: [
+//           Text(
+//             " ${listresponse[index]['homeTeam']}",
+//             style: const TextStyle(color: Colors.white, fontSize: 15),
+//           ),
+//           Text(
+//               " ${listresponse[index]['predictions']['score'].toString().split("-")[0]}",
+//               style: team1score > team2score
+//                   ? const TextStyle(color: Colors.green, fontSize: 20)
+//                   : const TextStyle(color: Colors.red, fontSize: 20)),
+//           const Text(" VS ",
+//               style: TextStyle(color: Colors.white, fontSize: 12)),
+//           Text(
+//               " ${listresponse[index]['predictions']['score'].toString().split("-")[1]}",
+//               style: team1score < team2score
+//                   ? const TextStyle(color: Colors.green, fontSize: 20)
+//                   : const TextStyle(color: Colors.red, fontSize: 20)),
+//           Text(
+//             " ${listresponse[index]['awayTeam']}",
+//             style: const TextStyle(color: Colors.white, fontSize: 15),
+//           ),
+//         ],
+//       ),
+//       // Text(
+//       //   "Result : ${listresponse[index]['predictions']['result']}",
+//       //   style: const TextStyle(color: Colors.white, fontSize: 15),
+//       // ),
+//       Text(
+//         "Result: ${listresponse[index]['predictions']['result']}",
+//         style: const TextStyle(color: Colors.white, fontSize: 15),
+//       ),
+//       //Text(listresponse![index]['Competition_name']),
+
+//       const SizedBox(
+//         height: 20,
+//       ),
+//       // Text(
+//       //   "Competition_cluster : ${listresponse[index]['competition_cluster']}",
+//       //   style: const TextStyle(color: Colors.white, fontSize: 15),
+//       // ),
+//       // Text(
+//       //   "Status : ${listresponse[index]['status']}",
+//       //   style: const TextStyle(color: Colors.white, fontSize: 15),
+//       // ),
+//       // Text(
+//       //   "Federation : ${listresponse[index]['federation']}",
+//       //   style: const TextStyle(color: Colors.white, fontSize: 15),
+//       // ),
+//       // Text(
+//       //   "Is expired : ${listresponse[index]['is_expired'].toString()}",
+//       //   style: const TextStyle(color: Colors.white, fontSize: 15),
+//       // ),
+//       // Text(
+//       //   "Season : ${listresponse[index]['season']}",
+//       //   style: const TextStyle(color: Colors.white, fontSize: 15),
+//       // ),
+//       // Text(
+//       //   "Result : ${listresponse[index]['result']}",
+//       //   style: const TextStyle(color: Colors.white, fontSize: 15),
+//       // ),
+//       // Text(
+//       //   "Start_date : ${listresponse[index]['start_date']}",
+//       //   style: const TextStyle(color: Colors.white, fontSize: 15),
+//       // ),
+//       // Text(
+//       //   "Last_update_at : ${listresponse[index]['last_update_at']}",
+//       //   style: const TextStyle(color: Colors.white, fontSize: 15),
+//       // ),
+//       // Text(
+//       //   "Odds : ${listresponse[index]['odds']}",
+//       //   style: const TextStyle(color: Colors.white, fontSize: 15),
+//       // ),
+//     ],
+//   );
+// }
