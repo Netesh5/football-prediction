@@ -23,7 +23,7 @@ Widget team_detail(List listresponse, Color cardcolor) {
             children: [
               team(listresponse, index, team1score, team2score),
               Text(
-                " ${listresponse[index]['predictions']['result']}",
+                "${listresponse[index]['predictions']['result']}",
                 style: const TextStyle(color: Colors.white, fontSize: 15),
               ),
             ],
@@ -37,8 +37,11 @@ Widget team_detail(List listresponse, Color cardcolor) {
 Widget team(List listresponse, int index, int team1score, int team2score) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
+    crossAxisAlignment: CrossAxisAlignment.center,
     children: [
       Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const Icon(
             Icons.sports_football,
@@ -54,15 +57,31 @@ Widget team(List listresponse, int index, int team1score, int team2score) {
       Text(
           " ${listresponse[index]['predictions']['score'].toString().split("-")[0]}",
           style: team1score > team2score
-              ? const TextStyle(color: Colors.green, fontSize: 20)
-              : const TextStyle(color: Colors.red, fontSize: 20)),
-      const Text(" VS ", style: TextStyle(color: Colors.white, fontSize: 12)),
+              ? const TextStyle(
+                  color: Colors.green,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold)
+              : const TextStyle(
+                  color: Colors.red,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold)),
+      const Text(" VS ",
+          style: TextStyle(
+              color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold)),
       Text(
           " ${listresponse[index]['predictions']['score'].toString().split("-")[1]}",
           style: team1score < team2score
-              ? const TextStyle(color: Colors.green, fontSize: 20)
-              : const TextStyle(color: Colors.red, fontSize: 20)),
+              ? const TextStyle(
+                  color: Colors.green,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold)
+              : const TextStyle(
+                  color: Colors.red,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold)),
       Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const Icon(
             Icons.sports_football,
