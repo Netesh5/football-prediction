@@ -133,21 +133,27 @@ class _HomepageState extends State<Homepage> {
                     ),
                     width: MediaQuery.of(context).size.width * 0.85,
                     child: TextField(
+                      style: const TextStyle(color: Colors.deepPurpleAccent),
                       decoration: InputDecoration(
-                        hintText: "Club name",
-                        hoverColor: bgcolor,
-                        icon: const Icon(
-                          Icons.search,
-                          color: Colors.white,
-                        ),
-                      ),
-                      cursorHeight: 30.0,
+                          border: InputBorder.none,
+                          focusColor: bgcolor,
+                          hintText: "Club name",
+                          hoverColor: bgcolor,
+                          icon: IconButton(
+                            onPressed: () {},
+                            icon: const Icon(Icons.search),
+                            color: Colors.deepPurpleAccent,
+                          ),
+                          hintStyle: TextStyle(color: Colors.deepPurple[50])),
+                      cursorColor: Colors.deepPurpleAccent,
                     ),
                   ),
                   const SizedBox(
                     width: 10,
                   ),
                   Container(
+                    height: 50,
+                    width: 43,
                     decoration: (BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: cardcolor,
@@ -155,7 +161,7 @@ class _HomepageState extends State<Homepage> {
                     child: IconButton(
                       onPressed: () {},
                       icon: const Icon(Icons.filter_alt_rounded),
-                      color: Colors.white,
+                      color: Colors.deepPurpleAccent,
                     ),
                   )
                 ],
