@@ -107,6 +107,60 @@ class _HomepageState extends State<Homepage> {
                 ],
               ),
             ),
+            const SizedBox(
+              height: 20,
+            ),
+            // Padding(
+            //   padding: const EdgeInsets.only(right: 10.0, left: 10.0),
+            //   child: Card(
+
+            //     color: cardcolor,
+            //     shape: RoundedRectangleBorder(
+            //         borderRadius: BorderRadius.circular(10)),
+            //     child: const TextField(
+            //       cursorHeight: 30.0,
+            //     ),
+            //   ),
+            // ),
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0),
+              child: Row(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: cardcolor,
+                    ),
+                    width: MediaQuery.of(context).size.width * 0.85,
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: "Club name",
+                        hoverColor: bgcolor,
+                        icon: const Icon(
+                          Icons.search,
+                          color: Colors.white,
+                        ),
+                      ),
+                      cursorHeight: 30.0,
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    decoration: (BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: cardcolor,
+                    )),
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.filter_alt_rounded),
+                      color: Colors.white,
+                    ),
+                  )
+                ],
+              ),
+            ),
             mapresponse == null
                 ? const Padding(
                     padding: EdgeInsets.only(top: 30),
