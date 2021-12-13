@@ -60,21 +60,28 @@ class _HomepageState extends State<Homepage> {
 
   Color bgcolor = const Color(0xff050810);
   Color cardcolor = const Color(0xff171D2D);
+  Color textcolor = const Color(0xff838489);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: bgcolor,
       appBar: AppBar(
-        title: const Text(
-          "Football Prediction",
-          style: TextStyle(fontFamily: "RobotoMono"),
-        ),
-        centerTitle: true,
-        backgroundColor: cardcolor,
+        backgroundColor: bgcolor,
+        iconTheme: IconThemeData(color: cardcolor),
+        elevation: 0,
+      ),
+      drawer: Drawer(
+        backgroundColor: const Color(0xff050810),
+        child: ListView(children: const []),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
+            Text(
+              "Hi, Nitesh Paudel",
+              style: TextStyle(
+                  color: textcolor, fontSize: 17, fontWeight: FontWeight.bold),
+            ),
             mapresponse == null
                 ? const Padding(
                     padding: EdgeInsets.only(top: 20),
