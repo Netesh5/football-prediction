@@ -109,7 +109,7 @@ class _HomepageState extends State<Homepage> {
             ),
             mapresponse == null
                 ? const Padding(
-                    padding: EdgeInsets.only(top: 20),
+                    padding: EdgeInsets.only(top: 30),
                     child: Center(
                       child: CircularProgressIndicator(
                         color: Colors.deepPurpleAccent,
@@ -119,6 +119,40 @@ class _HomepageState extends State<Homepage> {
                 : team_detail(listresponse!, cardcolor),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: bgcolor,
+        items: [
+          BottomNavigationBarItem(
+            backgroundColor: bgcolor,
+            icon: const Icon(
+              Icons.home_filled,
+              color: Colors.deepPurple,
+            ),
+            label: "",
+          ),
+          const BottomNavigationBarItem(
+            icon: Icon(
+              Icons.compass_calibration,
+              color: Colors.deepPurple,
+            ),
+            label: "",
+          ),
+          const BottomNavigationBarItem(
+            icon: Icon(
+              Icons.camera_indoor_rounded,
+              color: Colors.deepPurple,
+            ),
+            label: "",
+          ),
+          const BottomNavigationBarItem(
+            icon: Icon(
+              Icons.person,
+              color: Colors.deepPurple,
+            ),
+            label: "",
+          ),
+        ],
       ),
     );
   }

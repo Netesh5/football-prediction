@@ -13,20 +13,26 @@ Widget team_detail(List listresponse, Color cardcolor) {
       int team1score = int.parse(team1);
       int team2score = int.parse(team2);
       return Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Card(
-          color: cardcolor,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              team(listresponse, index, team1score, team2score),
-              Text(
-                "${listresponse[index]['predictions']['result']}",
-                style: const TextStyle(color: Colors.white, fontSize: 15),
-              ),
-            ],
+        padding: const EdgeInsets.all(8.0),
+        child: SizedBox(
+          height: 140,
+          child: Card(
+            color: cardcolor,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+              children: [
+                team(listresponse, index, team1score, team2score),
+                Text(
+                  // ignore: unnecessary_string_interpolations
+                  "${listresponse[index]['predictions']['result'].toString().toUpperCase()}",
+                  style: const TextStyle(color: Colors.white, fontSize: 13),
+                ),
+              ],
+            ),
           ),
         ),
       );
@@ -36,12 +42,11 @@ Widget team_detail(List listresponse, Color cardcolor) {
 
 Widget team(List listresponse, int index, int team1score, int team2score) {
   return Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    crossAxisAlignment: CrossAxisAlignment.center,
+    mainAxisAlignment: MainAxisAlignment.spaceAround,
     children: [
+      //Spacer(),
       Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        //mainAxisAlignment: MainAxisAlignment.start,
         children: [
           const Icon(
             Icons.sports_football,
@@ -49,39 +54,43 @@ Widget team(List listresponse, int index, int team1score, int team2score) {
             size: 50,
           ),
           Text(
-            " ${listresponse[index]['homeTeam']}",
+            " ${listresponse[index]['homeTeam'].toString()}",
             style: const TextStyle(color: Colors.white, fontSize: 17),
           ),
         ],
       ),
+      //const Spacer(),
       Text(
           " ${listresponse[index]['predictions']['score'].toString().split("-")[0]}",
           style: team1score > team2score
               ? const TextStyle(
                   color: Colors.green,
-                  fontSize: 20,
+                  fontSize: 30,
                   fontWeight: FontWeight.bold)
               : const TextStyle(
                   color: Colors.red,
-                  fontSize: 20,
+                  fontSize: 30,
                   fontWeight: FontWeight.bold)),
+      //Spacer(),
       const Text(" VS ",
           style: TextStyle(
               color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold)),
+
+      //Spacer(),
       Text(
           " ${listresponse[index]['predictions']['score'].toString().split("-")[1]}",
           style: team1score < team2score
               ? const TextStyle(
                   color: Colors.green,
-                  fontSize: 20,
+                  fontSize: 30,
                   fontWeight: FontWeight.bold)
               : const TextStyle(
                   color: Colors.red,
-                  fontSize: 20,
+                  fontSize: 30,
                   fontWeight: FontWeight.bold)),
+      //Spacer(),
       Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        // mainAxisAlignment: MainAxisAlignment.end,
         children: [
           const Icon(
             Icons.sports_football,
@@ -89,11 +98,12 @@ Widget team(List listresponse, int index, int team1score, int team2score) {
             size: 50,
           ),
           Text(
-            " ${listresponse[index]['awayTeam']}",
+            " ${listresponse[index]['awayTeam'].toString()}",
             style: const TextStyle(color: Colors.white, fontSize: 17),
           ),
         ],
       ),
+      //Spacer(),
     ],
   );
 }
