@@ -77,10 +77,35 @@ class _HomepageState extends State<Homepage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Text(
-              "Hi, Nitesh Paudel",
-              style: TextStyle(
-                  color: textcolor, fontSize: 17, fontWeight: FontWeight.bold),
+            Padding(
+              padding: const EdgeInsets.only(left: 20.0),
+              child: Column(
+                children: [
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      "Hi, Nitesh Paudel ",
+                      style: TextStyle(
+                          color: textcolor,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  const Align(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      "Let's Predict Football",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ],
+              ),
             ),
             mapresponse == null
                 ? const Padding(
