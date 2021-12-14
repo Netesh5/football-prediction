@@ -96,7 +96,7 @@ class _HomepageState extends State<Homepage>
                 Align(
                   alignment: Alignment.topLeft,
                   child: Text(
-                    "Hi, Nitesh Paudel ",
+                    "Hi, Nitesh Paudel   ",
                     style: TextStyle(
                         color: textcolor,
                         fontSize: 15,
