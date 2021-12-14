@@ -29,7 +29,9 @@ class Homepage extends StatefulWidget {
   _HomepageState createState() => _HomepageState();
 }
 
-class _HomepageState extends State<Homepage> {
+class _HomepageState extends State<Homepage>
+    with SingleTickerProviderStateMixin {
+  TabController? tabController;
   Map? mapresponse;
   Map? mapresponse2;
   Map? mapresponse3;
@@ -55,7 +57,18 @@ class _HomepageState extends State<Homepage> {
   @override
   void initState() {
     fetchdata();
+    tabController = TabController(
+      length: 2,
+      vsync: this,
+    );
+
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    tabController?.dispose();
+    super.dispose();
   }
 
   Color bgcolor = const Color(0xff050810);
@@ -75,110 +88,138 @@ class _HomepageState extends State<Homepage> {
         child: ListView(children: const []),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 20.0),
-              child: Column(
-                children: [
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      "Hi, Nitesh Paudel ",
-                      style: TextStyle(
-                          color: textcolor,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
-                    ),
+        child: Column(children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 20.0),
+            child: Column(
+              children: [
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    "Hi, Nitesh Paudel ",
+                    style: TextStyle(
+                        color: textcolor,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(
-                    height: 15,
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                const Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    "Let's Predict Football",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
                   ),
-                  const Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      "Let's Predict Football",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
-                    ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 10.0),
+            child: Row(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: cardcolor,
                   ),
+                  width: MediaQuery.of(context).size.width * 0.85,
+                  child: TextField(
+                    style: const TextStyle(color: Colors.deepPurpleAccent),
+                    decoration: InputDecoration(
+                        border: InputBorder.none,
+                        focusColor: bgcolor,
+                        hintText: "Club name",
+                        hoverColor: bgcolor,
+                        icon: IconButton(
+                          onPressed: () {},
+                          icon: const Icon(Icons.search),
+                          color: Colors.deepPurpleAccent,
+                        ),
+                        hintStyle: const TextStyle(color: Colors.white24)),
+                    cursorColor: Colors.deepPurpleAccent,
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Container(
+                  height: 50,
+                  width: 43,
+                  decoration: (BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: cardcolor,
+                  )),
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.filter_alt_rounded),
+                    color: Colors.deepPurpleAccent,
+                  ),
+                )
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+            child: SizedBox(
+              child: TabBar(
+                //physics: NeverScrollableScrollPhysics(),
+                controller: tabController,
+                tabs: const [
+                  Text("Today's Matches"),
+                  Text("Tomorrow Matches"),
                 ],
+                indicator: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: Colors.deepPurpleAccent,
+                ),
               ),
+              height: 30,
             ),
-            const SizedBox(
-              height: 20,
-            ),
-            // Padding(
-            //   padding: const EdgeInsets.only(right: 10.0, left: 10.0),
-            //   child: Card(
-
-            //     color: cardcolor,
-            //     shape: RoundedRectangleBorder(
-            //         borderRadius: BorderRadius.circular(10)),
-            //     child: const TextField(
-            //       cursorHeight: 30.0,
-            //     ),
-            //   ),
-            // ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10.0),
-              child: Row(
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: cardcolor,
-                    ),
-                    width: MediaQuery.of(context).size.width * 0.85,
-                    child: TextField(
-                      style: const TextStyle(color: Colors.deepPurpleAccent),
-                      decoration: InputDecoration(
-                          border: InputBorder.none,
-                          focusColor: bgcolor,
-                          hintText: "Club name",
-                          hoverColor: bgcolor,
-                          icon: IconButton(
-                            onPressed: () {},
-                            icon: const Icon(Icons.search),
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height,
+            child: TabBarView(
+              controller: tabController,
+              children: [
+                mapresponse == null
+                    ? const Padding(
+                        padding: EdgeInsets.only(top: 30),
+                        child: Center(
+                          child: CircularProgressIndicator(
                             color: Colors.deepPurpleAccent,
                           ),
-                          hintStyle: TextStyle(color: Colors.deepPurple[50])),
-                      cursorColor: Colors.deepPurpleAccent,
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Container(
-                    height: 50,
-                    width: 43,
-                    decoration: (BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: cardcolor,
-                    )),
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.filter_alt_rounded),
-                      color: Colors.deepPurpleAccent,
-                    ),
-                  )
-                ],
-              ),
+                        ),
+                      )
+                    : team_detail(listresponse!, cardcolor),
+                mapresponse == null
+                    ? const Padding(
+                        padding: EdgeInsets.only(top: 30),
+                        child: Center(
+                          child: CircularProgressIndicator(
+                            color: Colors.deepPurpleAccent,
+                          ),
+                        ),
+                      )
+                    : team_detail(listresponse!, cardcolor),
+              ],
             ),
-            mapresponse == null
-                ? const Padding(
-                    padding: EdgeInsets.only(top: 30),
-                    child: Center(
-                      child: CircularProgressIndicator(
-                        color: Colors.deepPurpleAccent,
-                      ),
-                    ),
-                  )
-                : team_detail(listresponse!, cardcolor),
-          ],
-        ),
+          )
+        ]),
       ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: bgcolor,
