@@ -94,16 +94,20 @@ class _HomepageState extends State<Homepage>
           headerSliverBuilder: (_, __) {
             return <Widget>[
               SliverAppBar(
-                expandedHeight: 210,
+                expandedHeight: 212,
                 backgroundColor: bgcolor,
                 pinned: true,
                 floating: true,
                 snap: true,
-                flexibleSpace: topbaritems(),
+                flexibleSpace: FlexibleSpaceBar(background: topbaritems()),
                 bottom: TabBar(
                   tabs: const [
-                    Text("Today's Matches"),
-                    Text("Tomorrow Matches"),
+                    SizedBox(
+                        height: 25,
+                        child: Center(child: Text("Today's Matches"))),
+                    SizedBox(
+                        height: 25,
+                        child: Center(child: Text("Tomorrow Matches"))),
                   ],
                   indicator: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
