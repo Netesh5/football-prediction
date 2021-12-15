@@ -5,6 +5,8 @@ class topbaritems extends StatelessWidget {
   Color bgcolor = const Color(0xff050810);
   Color cardcolor = const Color(0xff171D2D);
   Color textcolor = const Color(0xff838489);
+  TextEditingController textEditingController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -57,6 +59,12 @@ class topbaritems extends StatelessWidget {
                     ),
                     width: MediaQuery.of(context).size.width * 0.85,
                     child: TextField(
+                      // controller: textEditingController,
+
+                      // onChanged: (value) {
+                      //   result1 = Teamdetail.team1.where(
+                      //       (element) => element.contains(value)).toList();
+                      // },
                       style: const TextStyle(color: Colors.deepPurpleAccent),
                       decoration: InputDecoration(
                           border: InputBorder.none,

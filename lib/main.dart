@@ -30,9 +30,7 @@ class Homepage extends StatefulWidget {
   _HomepageState createState() => _HomepageState();
 }
 
-class _HomepageState extends State<Homepage>
-    with SingleTickerProviderStateMixin {
-  TabController? tabController;
+class _HomepageState extends State<Homepage> {
   Map? mapresponse;
   Map? mapresponse2;
   Map? mapresponse3;
@@ -47,29 +45,27 @@ class _HomepageState extends State<Homepage>
           'x-rapidapi-host': 'football-prediction1.p.rapidapi.com',
           'x-rapidapi-key': 'd83ac41cb1msh02d38254c7d5f4cp18e066jsne1c62a888b55'
         });
-    if (response.statusCode == 200) {
-      setState(() {
-        mapresponse = json.decode(response.body);
-        listresponse = mapresponse!["matches"];
-      });
+    try {
+      if (response.statusCode == 200) {
+        setState(() {
+          mapresponse = json.decode(response.body);
+          listresponse = mapresponse!["matches"];
+        });
+      }
+    } on Exception catch (e) {
+      Center(
+          child: Text(
+        e.toString(),
+        style: const TextStyle(color: Colors.white, fontSize: 30),
+      ));
     }
   }
 
   @override
   void initState() {
     fetchdata();
-    tabController = TabController(
-      length: 2,
-      vsync: this,
-    );
 
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    tabController?.dispose();
-    super.dispose();
   }
 
   Color bgcolor = const Color(0xff050810);
@@ -113,6 +109,7 @@ class _HomepageState extends State<Homepage>
                     borderRadius: BorderRadius.circular(15),
                     color: Colors.deepPurpleAccent,
                   ),
+                  indicatorPadding: const EdgeInsets.only(left: 10, right: 10),
                 ),
               ),
             ];

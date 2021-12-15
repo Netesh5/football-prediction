@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 // ignore: non_constant_identifier_names
+
 Widget team_detail(List listresponse, Color cardcolor) {
   return ListView.builder(
     shrinkWrap: true,
@@ -10,6 +11,8 @@ Widget team_detail(List listresponse, Color cardcolor) {
           listresponse[index]['predictions']['score'].toString().split("-")[0];
       String team2 =
           listresponse[index]['predictions']['score'].toString().split("-")[1];
+      team1 = listresponse[index]['homeTeam'].toString();
+      team2 = listresponse[index]['awayTeam'].toString();
       int team1score = int.parse(team1);
       int team2score = int.parse(team2);
       return Padding(
@@ -107,6 +110,7 @@ Widget team(List listresponse, int index, int team1score, int team2score) {
     ],
   );
 }
+
 // Widget team(List listresponse, int index, int team1score, int team2score) {
 //   return Column(
 //     children: [
