@@ -36,6 +36,7 @@ class _HomepageState extends State<Homepage> {
   Map? mapresponse3;
   List? listresponse;
   String? stringresponse;
+  teamdetail Teamdetail = teamdetail();
 
   Future fetchdata() async {
     http.Response response;
@@ -125,7 +126,7 @@ class _HomepageState extends State<Homepage> {
                         ),
                       ),
                     )
-                  : team_detail(listresponse!, cardcolor),
+                  : Teamdetail.team_detail(listresponse!, cardcolor),
               mapresponse == null
                   ? const Padding(
                       padding: EdgeInsets.only(top: 30),
@@ -135,7 +136,7 @@ class _HomepageState extends State<Homepage> {
                         ),
                       ),
                     )
-                  : team_detail(listresponse!, cardcolor),
+                  : Teamdetail.team_detail(listresponse!, cardcolor),
             ],
           ),
         ),

@@ -1,11 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:footballprediction/teams_detail.dart';
 
-class topbaritems extends StatelessWidget {
+class topbaritems extends StatefulWidget {
+  @override
+  State<topbaritems> createState() => _topbaritemsState();
+}
+
+class _topbaritemsState extends State<topbaritems> {
   //const topbaritems({Key? key}) : super(key: key);
   Color bgcolor = const Color(0xff050810);
+
   Color cardcolor = const Color(0xff171D2D);
+
   Color textcolor = const Color(0xff838489);
+  teamdetail _Teamdetail = teamdetail();
+
   TextEditingController textEditingController = TextEditingController();
+  List? result;
+  List? result2;
 
   @override
   Widget build(BuildContext context) {
@@ -59,12 +71,14 @@ class topbaritems extends StatelessWidget {
                     ),
                     width: MediaQuery.of(context).size.width * 0.85,
                     child: TextField(
-                      // controller: textEditingController,
+                      controller: textEditingController,
+                      onChanged: (value) {
+                        setState(() {
+                          result = _Teamdetail.listresponsee;
 
-                      // onChanged: (value) {
-                      //   result1 = Teamdetail.team1.where(
-                      //       (element) => element.contains(value)).toList();
-                      // },
+                          //result2=_Teamdetail.team2name
+                        });
+                      },
                       style: const TextStyle(color: Colors.deepPurpleAccent),
                       decoration: InputDecoration(
                           border: InputBorder.none,
@@ -72,7 +86,9 @@ class topbaritems extends StatelessWidget {
                           hintText: "Club name",
                           hoverColor: bgcolor,
                           icon: IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              //result=_Teamdetail
+                            },
                             icon: const Icon(Icons.search),
                             color: Colors.deepPurpleAccent,
                           ),
