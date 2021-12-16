@@ -2,12 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:footballprediction/teams_detail.dart';
 
 class topbaritems extends StatefulWidget {
+  List? Listresponse;
+  topbaritems(List? listresponse) {
+    Listresponse = listresponse;
+  }
+
   @override
   State<topbaritems> createState() => _topbaritemsState();
 }
 
 class _topbaritemsState extends State<topbaritems> {
-  //const topbaritems({Key? key}) : super(key: key);
+//const topbaritems({Key? key}) : super(key: key);
+
   Color bgcolor = const Color(0xff050810);
 
   Color cardcolor = const Color(0xff171D2D);
@@ -74,7 +80,9 @@ class _topbaritemsState extends State<topbaritems> {
                       controller: textEditingController,
                       onChanged: (value) {
                         setState(() {
-                          result = _Teamdetail.listresponsee;
+                          result = widget.Listresponse!
+                              .where((element) => element.contains(value))
+                              .toList();
 
                           //result2=_Teamdetail.team2name
                         });

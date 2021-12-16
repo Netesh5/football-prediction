@@ -36,7 +36,6 @@ class _HomepageState extends State<Homepage> {
   Map? mapresponse3;
   List? listresponse;
   String? stringresponse;
-  teamdetail Teamdetail = teamdetail();
 
   Future fetchdata() async {
     http.Response response;
@@ -62,6 +61,7 @@ class _HomepageState extends State<Homepage> {
     }
   }
 
+  teamdetail Teamdetail = teamdetail();
   @override
   void initState() {
     fetchdata();
@@ -96,7 +96,8 @@ class _HomepageState extends State<Homepage> {
                 pinned: true,
                 floating: true,
                 snap: true,
-                flexibleSpace: FlexibleSpaceBar(background: topbaritems()),
+                flexibleSpace:
+                    FlexibleSpaceBar(background: topbaritems(listresponse)),
                 bottom: TabBar(
                   tabs: const [
                     SizedBox(
