@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:footballprediction/teams_detail.dart';
 
@@ -22,7 +24,7 @@ class _topbaritemsState extends State<topbaritems> {
   teamdetail _Teamdetail = teamdetail();
 
   TextEditingController textEditingController = TextEditingController();
-  List? result;
+  List? listresponse;
   List? result2;
 
   @override
@@ -79,12 +81,12 @@ class _topbaritemsState extends State<topbaritems> {
                     child: TextField(
                       controller: textEditingController,
                       onChanged: (value) {
+                        //print(widget.Listresponse![0]["awayTeam"]);
                         setState(() {
-                          result = widget.Listresponse!
-                              .where((element) => element.contains(value))
+                          _Teamdetail.listresponsee = widget.Listresponse!
+                              .where((a) =>
+                                  a["awayTeam"].toString().contains(value))
                               .toList();
-
-                          //result2=_Teamdetail.team2name
                         });
                       },
                       style: const TextStyle(color: Colors.deepPurpleAccent),

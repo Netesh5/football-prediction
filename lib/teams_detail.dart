@@ -5,6 +5,8 @@ class teamdetail {
   String? team1name;
   String? team2name;
   List? listresponsee;
+  List? totalresponse;
+
   Widget team_detail(List listresponse, Color cardcolor) {
     return ListView.builder(
       shrinkWrap: true,
@@ -21,6 +23,7 @@ class teamdetail {
         // team1name = listresponse[index]['homeTeam'];
         // team2name = listresponse[index]['awayTeam'];
         listresponsee = listresponse;
+        responsee(listresponse);
         return Padding(
           padding: const EdgeInsets.all(8.0),
           child: SizedBox(
@@ -47,6 +50,10 @@ class teamdetail {
         );
       },
     );
+  }
+
+  List responsee(List listresponse) {
+    return listresponse;
   }
 
   Widget team(List listresponse, int index, int team1score, int team2score) {
