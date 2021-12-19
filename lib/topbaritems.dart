@@ -83,9 +83,11 @@ class _topbaritemsState extends State<topbaritems> {
                       onChanged: (value) {
                         //print(widget.Listresponse![0]["awayTeam"]);
                         setState(() {
-                          _Teamdetail.listresponsee = widget.Listresponse!
-                              .where((a) =>
-                                  a["awayTeam"].toString().contains(value))
+                          listresponse = widget.Listresponse!
+                              .where((element) => (element["homeTeam"]
+                                  .toString()
+                                  .toLowerCase()
+                                  .contains(value.toLowerCase())))
                               .toList();
                         });
                       },

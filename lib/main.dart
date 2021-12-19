@@ -35,7 +35,7 @@ class _HomepageState extends State<Homepage> {
   Map? mapresponse2;
   Map? mapresponse3;
   List? listresponse;
-  String? stringresponse;
+  List? listresponse2;
 
   Future fetchdata() async {
     http.Response response;
@@ -50,6 +50,7 @@ class _HomepageState extends State<Homepage> {
         setState(() {
           mapresponse = json.decode(response.body);
           listresponse = mapresponse!["matches"];
+          listresponse2 = listresponse!;
         });
       }
     } on Exception catch (e) {
@@ -97,7 +98,7 @@ class _HomepageState extends State<Homepage> {
                 floating: true,
                 snap: true,
                 flexibleSpace:
-                    FlexibleSpaceBar(background: topbaritems(listresponse)),
+                    FlexibleSpaceBar(background: topbaritems(listresponse2)),
                 bottom: TabBar(
                   tabs: const [
                     SizedBox(
@@ -127,7 +128,7 @@ class _HomepageState extends State<Homepage> {
                         ),
                       ),
                     )
-                  : Teamdetail.team_detail(listresponse!, cardcolor),
+                  : Teamdetail.team_detail(listresponse2!, cardcolor),
               mapresponse == null
                   ? const Padding(
                       padding: EdgeInsets.only(top: 30),
@@ -137,7 +138,7 @@ class _HomepageState extends State<Homepage> {
                         ),
                       ),
                     )
-                  : Teamdetail.team_detail(listresponse!, cardcolor),
+                  : Teamdetail.team_detail(listresponse2!, cardcolor),
             ],
           ),
         ),
