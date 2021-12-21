@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:footballprediction/drawer.dart';
 import 'package:footballprediction/teams_detail.dart';
-import 'package:footballprediction/topbaritems.dart';
 import 'package:http/http.dart' as http;
 
 void main() {
@@ -15,8 +15,10 @@ class Myapp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        fontFamily: "RobotoMono",
-      ),
+          iconTheme: const IconThemeData(color: Colors.white),
+          fontFamily: "RobotoMono",
+          textTheme: const TextTheme(
+              bodyText1: TextStyle(color: Color(0xff838489), fontSize: 16))),
       home: const Homepage(),
       debugShowCheckedModeBanner: false,
     );
@@ -36,6 +38,7 @@ class HomepageState extends State<Homepage> {
   Map? mapresponse3;
   List? listresponse;
   List? listresponse2;
+  int _currentindex = 0;
   TextEditingController textEditingController = TextEditingController();
 
   Future fetchdata() async {
@@ -74,6 +77,13 @@ class HomepageState extends State<Homepage> {
   Color bgcolor = const Color(0xff050810);
   Color cardcolor = const Color(0xff171D2D);
   Color textcolor = const Color(0xff838489);
+
+  void onItemTapped(int index) {
+    setState(() {
+      _currentindex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,10 +93,7 @@ class HomepageState extends State<Homepage> {
       //   iconTheme: IconThemeData(color: cardcolor),
       //   elevation: 0,
       // ),
-      drawer: Drawer(
-        backgroundColor: const Color(0xff050810),
-        child: ListView(children: const []),
-      ),
+      drawer: draweritem(),
       body: DefaultTabController(
         length: 2,
         child: NestedScrollView(
@@ -265,28 +272,33 @@ class HomepageState extends State<Homepage> {
             ),
             label: "",
           ),
-          const BottomNavigationBarItem(
-            icon: Icon(
+          BottomNavigationBarItem(
+            backgroundColor: bgcolor,
+            icon: const Icon(
               Icons.compass_calibration,
               color: Colors.deepPurple,
             ),
             label: "",
           ),
-          const BottomNavigationBarItem(
-            icon: Icon(
+          BottomNavigationBarItem(
+            backgroundColor: bgcolor,
+            icon: const Icon(
               Icons.camera_indoor_rounded,
               color: Colors.deepPurple,
             ),
             label: "",
           ),
-          const BottomNavigationBarItem(
-            icon: Icon(
+          BottomNavigationBarItem(
+            backgroundColor: bgcolor,
+            icon: const Icon(
               Icons.person,
               color: Colors.deepPurple,
             ),
             label: "",
           ),
         ],
+        currentIndex: _currentindex,
+        onTap: onItemTapped,
       ),
     );
   }
