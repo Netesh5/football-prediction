@@ -160,6 +160,11 @@ class HomepageState extends State<Homepage> {
                                                     .toString()
                                                     .toLowerCase()
                                                     .contains(
+                                                        value.toLowerCase())) ||
+                                                (element["awayTeam"]
+                                                    .toString()
+                                                    .toLowerCase()
+                                                    .contains(
                                                         value.toLowerCase())))
                                             .toList();
                                       });
@@ -248,138 +253,6 @@ class HomepageState extends State<Homepage> {
             ],
           ),
         ),
-        // child: Column(children: [
-        //   Padding(
-        //     padding: const EdgeInsets.only(left: 20.0),
-        //     child: Column(
-        //       children: [
-        //         Align(
-        //           alignment: Alignment.topLeft,
-        //           child: Text(
-        //             "Hi, Nitesh Paudel   ",
-        //             style: TextStyle(
-        //                 color: textcolor,
-        //                 fontSize: 15,
-        //                 fontWeight: FontWeight.bold),
-        //           ),
-        //         ),
-        //         const SizedBox(
-        //           height: 15,
-        //         ),
-        //         const Align(
-        //           alignment: Alignment.topLeft,
-        //           child: Text(
-        //             "Let's Predict Football",
-        //             style: TextStyle(
-        //                 color: Colors.white,
-        //                 fontSize: 20,
-        //                 fontWeight: FontWeight.bold),
-        //           ),
-        //         ),
-        //       ],
-        //     ),
-        //   ),
-        //   const SizedBox(
-        //     height: 20,
-        //   ),
-        //   Padding(
-        //     padding: const EdgeInsets.only(left: 10.0),
-        //     child: Row(
-        //       children: [
-        //         Container(
-        //           decoration: BoxDecoration(
-        //             borderRadius: BorderRadius.circular(10),
-        //             color: cardcolor,
-        //           ),
-        //           width: MediaQuery.of(context).size.width * 0.85,
-        //           child: TextField(
-        //             style: const TextStyle(color: Colors.deepPurpleAccent),
-        //             decoration: InputDecoration(
-        //                 border: InputBorder.none,
-        //                 focusColor: bgcolor,
-        //                 hintText: "Club name",
-        //                 hoverColor: bgcolor,
-        //                 icon: IconButton(
-        //                   onPressed: () {},
-        //                   icon: const Icon(Icons.search),
-        //                   color: Colors.deepPurpleAccent,
-        //                 ),
-        //                 hintStyle: const TextStyle(color: Colors.white24)),
-        //             cursorColor: Colors.deepPurpleAccent,
-        //           ),
-        //         ),
-        //         const SizedBox(
-        //           width: 10,
-        //         ),
-        //         Container(
-        //           height: 50,
-        //           width: 43,
-        //           decoration: (BoxDecoration(
-        //             borderRadius: BorderRadius.circular(10),
-        //             color: cardcolor,
-        //           )),
-        //           child: IconButton(
-        //             onPressed: () {},
-        //             icon: const Icon(Icons.filter_alt_rounded),
-        //             color: Colors.deepPurpleAccent,
-        //           ),
-        //         )
-        //       ],
-        //     ),
-        //   ),
-        //   const SizedBox(
-        //     height: 20,
-        //   ),
-        //   Padding(
-        //     padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-        //     child: SizedBox(
-        //       child: TabBar(
-        //         //physics: NeverScrollableScrollPhysics(),
-        //         controller: tabController,
-        //         tabs: const [
-        //           Text("Today's Matches"),
-        //           Text("Tomorrow Matches"),
-        //         ],
-        //         indicator: BoxDecoration(
-        //           borderRadius: BorderRadius.circular(15),
-        //           color: Colors.deepPurpleAccent,
-        //         ),
-        //       ),
-        //       height: 30,
-        //     ),
-        //   ),
-        //   const SizedBox(
-        //     height: 15,
-        //   ),
-        //   SizedBox(
-        //     height: MediaQuery.of(context).size.height,
-        //     child: TabBarView(
-        //       controller: tabController,
-        //       children: [
-        //         mapresponse == null
-        //             ? const Padding(
-        //                 padding: EdgeInsets.only(top: 30),
-        //                 child: Center(
-        //                   child: CircularProgressIndicator(
-        //                     color: Colors.deepPurpleAccent,
-        //                   ),
-        //                 ),
-        //               )
-        //             : team_detail(listresponse!, cardcolor),
-        //         mapresponse == null
-        //             ? const Padding(
-        //                 padding: EdgeInsets.only(top: 30),
-        //                 child: Center(
-        //                   child: CircularProgressIndicator(
-        //                     color: Colors.deepPurpleAccent,
-        //                   ),
-        //                 ),
-        //               )
-        //             : team_detail(listresponse!, cardcolor),
-        //       ],
-        //     ),
-        //   )
-        // ]),
       ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: bgcolor,
