@@ -272,31 +272,32 @@ class HomepageState extends State<Homepage> {
             ),
             label: "",
           ),
-          BottomNavigationBarItem(
-            backgroundColor: bgcolor,
-            icon: const Icon(
+          const BottomNavigationBarItem(
+            backgroundColor: Colors.teal,
+            icon: Icon(
               Icons.compass_calibration,
               color: Colors.deepPurple,
             ),
             label: "",
           ),
-          BottomNavigationBarItem(
-            backgroundColor: bgcolor,
-            icon: const Icon(
+          const BottomNavigationBarItem(
+            backgroundColor: Colors.deepOrangeAccent,
+            icon: Icon(
               Icons.camera_indoor_rounded,
               color: Colors.deepPurple,
             ),
             label: "",
           ),
-          BottomNavigationBarItem(
-            backgroundColor: bgcolor,
-            icon: const Icon(
+          const BottomNavigationBarItem(
+            backgroundColor: Colors.deepPurpleAccent,
+            icon: Icon(
               Icons.person,
               color: Colors.deepPurple,
             ),
             label: "",
           ),
         ],
+        selectedItemColor: cardcolor,
         currentIndex: _currentindex,
         onTap: onItemTapped,
       ),
