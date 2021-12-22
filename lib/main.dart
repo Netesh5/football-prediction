@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:footballprediction/drawer.dart';
 import 'package:footballprediction/teams_detail.dart';
@@ -70,7 +71,6 @@ class HomepageState extends State<Homepage> {
   @override
   void initState() {
     fetchdata();
-
     super.initState();
   }
 
@@ -261,6 +261,7 @@ class HomepageState extends State<Homepage> {
           ),
         ),
       ),
+
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: bgcolor,
         items: [
