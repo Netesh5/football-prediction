@@ -84,6 +84,23 @@ class HomepageState extends State<Homepage> {
     });
   }
 
+  Widget filter() {
+    return Container(
+      color: cardcolor,
+      height: MediaQuery.of(context).size.height * 0.6,
+      child: Column(
+        children: const [
+          ListTile(
+              // leading: Radio(
+              //   value: 0, groupValue: groupValue, onChanged: (){
+
+              //   })
+              )
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -206,7 +223,9 @@ class HomepageState extends State<Homepage> {
                                     color: cardcolor,
                                   )),
                                   child: IconButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      filter();
+                                    },
                                     icon: const Icon(Icons.filter_alt_rounded),
                                     color: Colors.deepPurpleAccent,
                                   ),
