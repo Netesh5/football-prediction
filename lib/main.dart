@@ -101,10 +101,22 @@ class HomepageState extends State<Homepage> {
                 decoration: BoxDecoration(
                     color: cardcolor, borderRadius: BorderRadius.circular(15)),
                 width: MediaQuery.of(context).size.width * 0.5,
-                height: MediaQuery.of(context).size.height * 0.5,
+                height: MediaQuery.of(context).size.height * 0.55,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    const Text("Filter by League",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold)),
+                    const Divider(
+                      height: 30,
+                      thickness: 2,
+                    ),
                     Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: Row(
@@ -196,6 +208,25 @@ class HomepageState extends State<Homepage> {
                           ),
                         ],
                       ),
+                    ),
+                    Container(
+                      height: 35,
+                      width: 100,
+                      decoration: BoxDecoration(
+                          color: Colors.deepPurpleAccent,
+                          borderRadius: BorderRadius.circular(15)),
+                      child: TextButton(
+                          onPressed: () {
+                            setState(() {
+                              checkbox1 = false;
+                              checkbox2 = false;
+                              checkbox3 = false;
+                              checkbox4 = false;
+                            });
+                          },
+                          child: const Text("Clear",
+                              style: TextStyle(
+                                  fontSize: 18, color: Colors.white))),
                     )
                   ],
                 ),
