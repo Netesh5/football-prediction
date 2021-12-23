@@ -40,6 +40,11 @@ class HomepageState extends State<Homepage> {
   List? listresponse;
   List? listresponse2;
   int _currentindex = 0;
+  bool checkbox1 = false;
+  bool checkbox2 = false;
+  bool checkbox3 = false;
+  bool checkbox4 = false;
+
   TextEditingController textEditingController = TextEditingController();
 
   Future fetchdata() async {
@@ -84,21 +89,120 @@ class HomepageState extends State<Homepage> {
     });
   }
 
-  Widget filter() {
-    return Container(
-      color: cardcolor,
-      height: MediaQuery.of(context).size.height * 0.6,
-      child: Column(
-        children: const [
-          ListTile(
-              // leading: Radio(
-              //   value: 0, groupValue: groupValue, onChanged: (){
-
-              //   })
-              )
-        ],
-      ),
-    );
+  filter(context) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return Center(
+            child: Material(
+              type: MaterialType.transparency,
+              // ignore: sized_box_for_whitespace
+              child: Container(
+                decoration: BoxDecoration(
+                    color: cardcolor, borderRadius: BorderRadius.circular(15)),
+                width: MediaQuery.of(context).size.width * 0.5,
+                height: MediaQuery.of(context).size.height * 0.5,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Row(
+                        children: [
+                          Checkbox(
+                              activeColor: Colors.deepPurpleAccent,
+                              checkColor: Colors.white,
+                              value: checkbox1,
+                              onChanged: (value) {
+                                setState(() {
+                                  checkbox1 = value!;
+                                });
+                              }),
+                          const SizedBox(
+                            width: 16,
+                          ),
+                          const Text(
+                            "UEFA",
+                            style: TextStyle(fontSize: 22, color: Colors.white),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Row(
+                        children: [
+                          Checkbox(
+                              hoverColor: Colors.deepPurpleAccent,
+                              checkColor: Colors.white,
+                              value: checkbox2,
+                              onChanged: (bool? value) {
+                                setState(() {
+                                  checkbox2 = value!;
+                                });
+                              }),
+                          const SizedBox(
+                            width: 16,
+                          ),
+                          const Text(
+                            "UEFA",
+                            style: TextStyle(fontSize: 22, color: Colors.white),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Row(
+                        children: [
+                          Checkbox(
+                              hoverColor: Colors.deepPurpleAccent,
+                              checkColor: Colors.white,
+                              value: checkbox3,
+                              onChanged: (bool? value) {
+                                setState(() {
+                                  checkbox3 = value!;
+                                });
+                              }),
+                          const SizedBox(
+                            width: 16,
+                          ),
+                          const Text(
+                            "UEFA",
+                            style: TextStyle(fontSize: 22, color: Colors.white),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Row(
+                        children: [
+                          Checkbox(
+                              hoverColor: Colors.deepPurpleAccent,
+                              checkColor: Colors.white,
+                              value: checkbox4,
+                              onChanged: (bool? value) {
+                                setState(() {
+                                  checkbox4 = value!;
+                                });
+                              }),
+                          const SizedBox(
+                            width: 16,
+                          ),
+                          const Text(
+                            "UEFA",
+                            style: TextStyle(fontSize: 22, color: Colors.white),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          );
+        });
   }
 
   @override
@@ -224,7 +328,7 @@ class HomepageState extends State<Homepage> {
                                   )),
                                   child: IconButton(
                                     onPressed: () {
-                                      filter();
+                                      filter(context);
                                     },
                                     icon: const Icon(Icons.filter_alt_rounded),
                                     color: Colors.deepPurpleAccent,
