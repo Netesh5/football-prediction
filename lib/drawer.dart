@@ -21,7 +21,7 @@ Widget draweritem() {
       ),
       ListTile(
         leading: Icon(Icons.home, color: textcolor),
-        title: const Text("Home"),
+        title: const Text("home"),
       ),
       ListTile(
         leading: Icon(Icons.home, color: textcolor),

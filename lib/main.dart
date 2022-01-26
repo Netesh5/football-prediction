@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:footballprediction/drawer.dart';
 import 'package:footballprediction/teams_detail.dart';
@@ -72,6 +71,7 @@ class HomepageState extends State<Homepage> {
     }
   }
 
+  // ignore: non_constant_identifier_names
   teamdetail Teamdetail = teamdetail();
   @override
   void initState() {
@@ -96,12 +96,11 @@ class HomepageState extends State<Homepage> {
           return Center(
             child: Material(
               type: MaterialType.transparency,
-              // ignore: sized_box_for_whitespace
               child: Container(
                 decoration: BoxDecoration(
                     color: cardcolor, borderRadius: BorderRadius.circular(15)),
                 width: MediaQuery.of(context).size.width * 0.5,
-                height: MediaQuery.of(context).size.height * 0.55,
+                height: MediaQuery.of(context).size.height * 0.65,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [

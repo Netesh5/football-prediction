@@ -1,10 +1,11 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:footballprediction/teams_detail.dart';
 
+// ignore: camel_case_types, must_be_immutable
 class topbaritems extends StatefulWidget {
+  // ignore: non_constant_identifier_names
   List? Listresponse;
+  // ignore: use_key_in_widget_constructors
   topbaritems(List? listresponse) {
     Listresponse = listresponse;
   }
@@ -13,6 +14,7 @@ class topbaritems extends StatefulWidget {
   State<topbaritems> createState() => _topbaritemsState();
 }
 
+// ignore: camel_case_types
 class _topbaritemsState extends State<topbaritems> {
 //const topbaritems({Key? key}) : super(key: key);
 
@@ -21,7 +23,8 @@ class _topbaritemsState extends State<topbaritems> {
   Color cardcolor = const Color(0xff171D2D);
 
   Color textcolor = const Color(0xff838489);
-  teamdetail _Teamdetail = teamdetail();
+  // ignore: non_constant_identifier_names, unused_field
+  final teamdetail _Teamdetail = teamdetail();
 
   TextEditingController textEditingController = TextEditingController();
   List? listresponse;

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
-// ignore: non_constant_identifier_names
+// ignore: non_constant_identifier_names, camel_case_types
 class teamdetail {
   String? team1name;
   String? team2name;
   List? listresponsee;
   List? totalresponse;
 
+  // ignore: non_constant_identifier_names
   Widget team_detail(List listresponse, Color cardcolor) {
     return ListView.builder(
       shrinkWrap: true,
