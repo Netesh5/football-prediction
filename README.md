@@ -1,6 +1,9 @@
-# footballprediction
+# Footballprediction
 
-A new Flutter project.
+ * A new Flutter project.This app uses Restful api from Rapid api . Contains all the match prediction of ongoing and tomorrow matches.
+
+# Screenshots : 
+
 
 ## Getting Started
 
